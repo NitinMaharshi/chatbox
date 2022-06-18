@@ -167,7 +167,7 @@ const ChatBox = () => {
             </div>
           ) : (
             <div className={styles.messagebox}>
-              {users.reverse().map((item) => {
+              {users.map((item) => {
                 if (!item.name.length) {
                   return <img className={styles.chatimggif} src={item.url} />;
                 } else {

@@ -98,31 +98,6 @@ const ChatBox = () => {
     <div>
       <div className={styles.Container}>
         <div className={styles.Chatbox}>
-          {showgif ? (
-            <div className={styles.gifs_box}>
-              {gifdata.map((gif) => {
-                return (
-                  <img
-                    className={styles.gifimg}
-                    onClick={(e) => onGifSend(e)}
-                    src={gif.images.original.url}
-                    alt=""
-                  />
-                );
-              })}
-            </div>
-          ) : (
-            <div className={styles.messagebox}>
-              {users.reverse().map((item) => {
-                if (!item.name.length) {
-                  return <img className={styles.chatimggif} src={item.url} />;
-                } else {
-                  return <div className={styles.message}>{item.name}</div>;
-                }
-              })}
-            </div>
-          )}
-
           <div className={styles.input_group}>
             {showgif ? (
               <form onSubmit={handleSubmit}>
@@ -176,8 +151,32 @@ const ChatBox = () => {
               </div>
             </div>
           </div>
+
+          {showgif ? (
+            <div className={styles.gifs_box}>
+              {gifdata.map((gif) => {
+                return (
+                  <img
+                    className={styles.gifimg}
+                    onClick={(e) => onGifSend(e)}
+                    src={gif.images.original.url}
+                    alt=""
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div className={styles.messagebox}>
+              {users.reverse().map((item) => {
+                if (!item.name.length) {
+                  return <img className={styles.chatimggif} src={item.url} />;
+                } else {
+                  return <div className={styles.message}>{item.name}</div>;
+                }
+              })}
+            </div>
+          )}
         </div>
-        <div className={styles.Inputbox}></div>
       </div>
     </div>
   );
